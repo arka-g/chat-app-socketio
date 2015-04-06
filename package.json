@@ -1,0 +1,14 @@
+{
+	"name":"chat-app",
+	"description":"chat-app-socketio",
+	"dependencies":
+	{
+		"socket.io":"1.3.4",
+		"express":"4.11.2"
+	},
+	"repository":
+	{
+		"type":"git",
+		"url":"https://github.com/arka-g/chat-app-socketio.git"
+	}
+}
