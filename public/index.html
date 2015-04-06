@@ -5,16 +5,27 @@
 </head>
 <body>
 	<div id = "chat">
+		<ul id = "msglist"></ul>
 	</div>
 	<form id="send-message">
 		<input size = "40" id = "message"></input>
 		<input type="submit"></input>
 	</form>
 </body>
-<script src="client.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io();
-</script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="client.js"></script>
+<script type="text/javascript">
+var socket = io();
+$('form').submit(function(){
+	socket.emit('chat message', $('#message').val());
+	//set text field back to default
+	$('#message').val('');
+	return false;
+});
 
+socket.on('chat message', function(msg){
+	$('#msglist').append($('<li>').text(msg));
+});
+</script>
 </html>
