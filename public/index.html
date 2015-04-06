@@ -16,17 +16,6 @@
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="client.js"></script>
-<script type="text/javascript">
-var socket = io();
-$('form').submit(function(){
-	socket.emit('chat message', $('#message').val());
-	//set text field back to default
-	$('#message').val('');
-	return false;
-});
-socket.on('chat message', function(msg){
-	$('#msglist').append($('<li>').text(msg));
-});
-</script>
+
 
 </html>
