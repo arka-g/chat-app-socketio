@@ -1,5 +1,5 @@
 var socket = io();
-$('form').submit(function(){
+$('#submit-server').on('click',function(){
 	socket.emit('chat message', $('#message').val());
 	//set text field back to default
 	$('#message').val('');
