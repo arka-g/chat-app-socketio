@@ -1,5 +1,6 @@
 #chat{
 	height:500px;
+<<<<<<< Updated upstream
 	background: #000000;
 }
 h3{
@@ -7,4 +8,10 @@ h3{
 }
 #send-message{
 	text-align: center;
+=======
+}
+
+#container{
+	display:none;
+>>>>>>> Stashed changes
 }

@@ -4,13 +4,21 @@
   <title>Chat Room</title>
 </head>
 <body>
-	<div id = "chat">
-		<ul id = "msglist"></ul>
-	</div>
-	<form id="send-message">
-		<input size = "40" id = "message"></input>
-		<input id="submit-server" type="submit" value="Submit"></input>
+	<h1>Welcome to our chat app</h1>
+	<form id = "username-container">
+		<input size = "30" id = "enter-name" placeholder="Enter a username"></input>
+		<input id = "submit-username" type = "submit" value = "Enter Chat"></input>
 	</form>
+	<div id = "container">
+		<div id = "chat">
+			<ul id = "msglist"></ul>
+		</div>
+
+		<form id="send-message">
+			<input size = "40" id = "message"></input>
+			<input id="submit-server" type="submit" value="Submit"></input>
+		</form>
+	</div>
 </body>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
