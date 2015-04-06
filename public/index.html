@@ -9,11 +9,12 @@
 	</div>
 	<form id="send-message">
 		<input size = "40" id = "message"></input>
-		<input type="submit"></input>
+		<input id="submit-server" type="submit" value="Submit"></input>
 	</form>
 </body>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script src="client.js"></script>
 <script type="text/javascript">
 var socket = io();
@@ -23,9 +24,9 @@ $('form').submit(function(){
 	$('#message').val('');
 	return false;
 });
-
 socket.on('chat message', function(msg){
 	$('#msglist').append($('<li>').text(msg));
 });
 </script>
+
 </html>
