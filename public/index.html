@@ -3,7 +3,6 @@
 <head>
   <title>Chat Room</title>
 </head>
-
 <body>
 	<div id = "chat">
 	</div>
@@ -11,7 +10,11 @@
 		<input size = "40" id = "message"></input>
 		<input type="submit"></input>
 	</form>
-<script src="client.js"></script>
 </body>
+<script src="client.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
 
 </html>

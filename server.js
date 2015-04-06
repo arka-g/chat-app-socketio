@@ -13,3 +13,11 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req,res){
 	res.sendFile(__dirname + '/public/index.html');
 });
+
+//users connected
+var users = {};
+var numUsers = 0;
+
+io.on('connection', function(socket){
+	console.log('a user connected');
+});
