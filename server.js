@@ -49,6 +49,8 @@ io.on('connection', function(socket){
 		usernames.splice(index,1);
 		//update usernames
 		io.emit('usernames', usernames);
+		io.emit('new user', socket.username + " has left the chat room");
+
 
 		//no username
 		if(!socket.username){

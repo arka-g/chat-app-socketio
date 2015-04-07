@@ -29,6 +29,7 @@ socket.on('new user', function(name){
 });
 
 socket.on('usernames', function(usernames){
+	//clear list first
 	$('#userslist').html("");
 	//loop through usernames array and print
 	for(i = 0; i<usernames.length;i++){
