@@ -16,7 +16,7 @@ app.get('/', function(req,res){
 });
 
 //users connected
-usernames =[];
+usernames = {};
 
 io.on('connection', function(socket){
 
@@ -26,9 +26,10 @@ io.on('connection', function(socket){
 		//bind to socket of user
 		socket.username = name;
 		//add to array
-		usernames.push(socket.username);
+		// usernames.push(socket.username);
+		usernames[socket.username]=socket;
 		io.emit('new user', name + " has joined the chat room");
-		io.emit('usernames', usernames);
+		io.emit('usernames', Object.keys(usernames));
 	});
 
 	//new chat message sent
@@ -42,37 +43,37 @@ io.on('connection', function(socket){
 		if(keyword === "/whisper"){
 			//username you want to send to
 			var userSend = splitmsg[1];
-			for(i=0;i<usernames.length;i++){
-				if(usernames[i]==userSend){
-					var userIndex = usernames.indexOf(userSend);
-				}
-			}
 
-
-			console.log(usernames[userIndex]);
-			id = usernames[userIndex];
+			console.log(usernames[userSend]);
 			console.log(socket.id);
 			var newMsg = "";
 			// console.log(splitmsg.length);
 			//message you want to send
-			for(i = 1; i<splitmsg.length;i++){
+			for(i = 2; i<splitmsg.length;i++){
 				newMsg += splitmsg[i] + " ";
 			}
 
-			socket.broadcast.to(id).emit('chat message', {message: msg, username: socket.username});
-			//console.log(newMsg);
+			console.log(newMsg);
+			//send to specific user
+			usernames[userSend].emit('secret message', {message: newMsg, username: socket.username});
+			socket.emit('secret message', {message: newMsg, username: socket.username});
 		}
-		//send to everyone (send an object to contain username)
-		// io.emit('chat message', {message: msg, username: socket.username});
+		else{
+			//send to everyone
+			 io.emit('chat message', {message: msg, username: socket.username});
+		}
+
 	});
 
 	//user disconnect
 	socket.on('disconnect', function(){
 		//console.log(usernames+ ' disconnected');
-		var index = usernames.indexOf(socket.username);
+		// var index = usernames.indexOf(socket.username);
 		//remove username from array
-		usernames.splice(index,1);
+		// usernames.splice(index,1);
 		//update usernames
+		delete usernames[socket.username];
+
 		io.emit('usernames', usernames);
 		//io.emit('new user', socket.username + " has left the chat room");
 

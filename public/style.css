@@ -2,8 +2,9 @@
 	height:500px;
 	background: #000000;
 }
-#chat{
-	color: #01DF3A;
+#msglist{
+	/*color: #01DF3A;*/
+	color:blue;
 }
 #send-message{
 	text-align: center;
@@ -17,4 +18,12 @@
 	display:block;
 	background: #C0C0C0;
 	display:none;
+}
+
+#secretMsgList{
+	color:red;
+}
+
+#pm{
+	color:white;
 }

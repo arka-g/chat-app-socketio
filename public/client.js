@@ -36,3 +36,8 @@ socket.on('usernames', function(usernames){
 		$('#userslist').append($('<li>').text(usernames[i]));
 	}
 });
+
+socket.on('secret message',function(msg){
+	$('#secretMsgList').append($('<li>').text(msg.username + ": " + msg.message));
+
+})
