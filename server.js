@@ -34,8 +34,36 @@ io.on('connection', function(socket){
 	//new chat message sent
 	socket.on('chat message', function(msg){
 		//console.log('message: ' + msg + " username: " + socket.username);
+		var splitmsg = msg.split(" ");
+		console.log("The split message " + splitmsg);
+		var keyword = splitmsg[0];
+
+		console.log(keyword);
+		if(keyword === "/whisper"){
+			//username you want to send to
+			var userSend = splitmsg[1];
+			for(i=0;i<usernames.length;i++){
+				if(usernames[i]==userSend){
+					var userIndex = usernames.indexOf(userSend);
+				}
+			}
+
+
+			console.log(usernames[userIndex]);
+			id = usernames[userIndex];
+			console.log(socket.id);
+			var newMsg = "";
+			// console.log(splitmsg.length);
+			//message you want to send
+			for(i = 1; i<splitmsg.length;i++){
+				newMsg += splitmsg[i] + " ";
+			}
+
+			socket.broadcast.to(id).emit('chat message', {message: msg, username: socket.username});
+			//console.log(newMsg);
+		}
 		//send to everyone (send an object to contain username)
-		io.emit('chat message', {message: msg, username: socket.username});
+		// io.emit('chat message', {message: msg, username: socket.username});
 	});
 
 	//user disconnect
@@ -46,7 +74,7 @@ io.on('connection', function(socket){
 		usernames.splice(index,1);
 		//update usernames
 		io.emit('usernames', usernames);
-		io.emit('new user', socket.username + " has left the chat room");
+		//io.emit('new user', socket.username + " has left the chat room");
 
 		//no username
 		if(!socket.username){
