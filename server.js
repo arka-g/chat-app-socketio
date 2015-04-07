@@ -41,16 +41,13 @@ io.on('connection', function(socket){
 
 		//user disconnect
 	socket.on('disconnect', function(){
-		//console.log(socket.username);
 		//console.log(usernames+ ' disconnected');
 		var index = usernames.indexOf(socket.username);
-		//console.log(index);
 		//remove username from array
 		usernames.splice(index,1);
 		//update usernames
 		io.emit('usernames', usernames);
 		io.emit('new user', socket.username + " has left the chat room");
-
 
 		//no username
 		if(!socket.username){
