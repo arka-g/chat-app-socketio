@@ -74,7 +74,7 @@ io.on('connection', function(socket){
 		//update usernames
 		delete usernames[socket.username];
 
-		io.emit('usernames', usernames);
+		io.emit('usernames', Object.keys(usernames));
 		//io.emit('new user', socket.username + " has left the chat room");
 
 		//no username
