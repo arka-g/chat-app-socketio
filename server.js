@@ -19,26 +19,11 @@ app.get('/', function(req,res){
 usernames =[];
 
 io.on('connection', function(socket){
-	console.log('a user connected');
-
-	//user disconnect
-	socket.on('disconnect', function(socket){
-		console.log('user disconnected');
-		var index = usernames.indexOf(socket.username);
-		//remove username from array
-		usernames.splice(index,1);
-		//update usernames
-		io.emit('usernames', usernames);
-
-		//no username
-		if(!socket.username){
-			return;
-		}
-	});
+	//console.log('a user connected');
 
 	//new user logs in
 	socket.on('new user', function(name){
-		console.log('name: ' + name);
+		//console.log('name: ' + name);
 		//bind to socket of user
 		socket.username = name;
 		//add to array
@@ -49,9 +34,26 @@ io.on('connection', function(socket){
 
 	//new chat message sent
 	socket.on('chat message', function(msg){
-		console.log('message: ' + msg);
+		//console.log('message: ' + msg + " username: " + socket.username);
 		//send to everyone (send an object to contain username)
 		io.emit('chat message', {message: msg, username: socket.username});
+	});
+
+		//user disconnect
+	socket.on('disconnect', function(){
+		//console.log(socket.username);
+		//console.log(usernames+ ' disconnected');
+		var index = usernames.indexOf(socket.username);
+		//console.log(index);
+		//remove username from array
+		usernames.splice(index,1);
+		//update usernames
+		io.emit('usernames', usernames);
+
+		//no username
+		if(!socket.username){
+			return;
+		}
 	});
 });
 
