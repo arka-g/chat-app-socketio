@@ -5,8 +5,9 @@ var express = require('express'),
 	//socket
 	io = require('socket.io').listen(server);
 
-server.listen(3000);
-console.log("Server running on  port 3000");
+server.listen(process.env.PORT || 3000, function(){
+  console.log('listening on', server.address().port);
+});
 
 app.use(express.static(__dirname + '/public'));
 
