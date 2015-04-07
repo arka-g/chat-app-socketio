@@ -38,6 +38,7 @@ io.on('connection', function(socket){
 		io.emit('chat message', {message: msg, username: socket.username});
 	});
 
+	//user disconnect
 	socket.on('disconnect', function(){
 		//console.log(usernames+ ' disconnected');
 		var index = usernames.indexOf(socket.username);
