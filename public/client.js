@@ -1,11 +1,13 @@
 var socket = io();
 $('#submit-username').on('click',function(e){
 	e.preventDefault();
-	socket.emit('new user', $('#enter-name').val());
+	var name = $('#enter-name').val();
+	socket.emit('new user', name);
 	//should check here later on if the username already exists or not
 	$('#container').show();
 	$('#users').show();
 	$('#username-container').hide();
+	$('#me').text("You are " + name);
 	//reset 
 	$('#enter-name').val('');
 	return false;
@@ -25,7 +27,7 @@ socket.on('chat message', function(msg){
 });
 
 socket.on('new user', function(name){
-	$('#msglist').append($('<li>').text(name));
+	$('#msglist').append($('<li>').text(name + " has joined the chat room"));
 });
 
 socket.on('usernames', function(usernames){
