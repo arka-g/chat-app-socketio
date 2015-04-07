@@ -50,7 +50,7 @@ io.on('connection', function(socket){
 	//new chat message sent
 	socket.on('chat message', function(msg){
 		console.log('message: ' + msg);
-		//send to everyone
+		//send to everyone (send an object to contain username)
 		io.emit('chat message', {message: msg, username: socket.username});
 	});
 });
