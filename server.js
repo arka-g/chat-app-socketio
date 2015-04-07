@@ -22,11 +22,9 @@ io.on('connection', function(socket){
 
 	//new user logs in
 	socket.on('new user', function(name){
-		//console.log('name: ' + name);
 		//bind to socket of user
 		socket.username = name;
 		//add to array
-		// usernames.push(socket.username);
 		usernames[socket.username]=socket;
 		io.emit('new user', name + " has joined the chat room");
 		io.emit('usernames', Object.keys(usernames));
@@ -47,7 +45,6 @@ io.on('connection', function(socket){
 			console.log(usernames[userSend]);
 			console.log(socket.id);
 			var newMsg = "";
-			// console.log(splitmsg.length);
 			//message you want to send
 			for(i = 2; i<splitmsg.length;i++){
 				newMsg += splitmsg[i] + " ";
@@ -67,10 +64,6 @@ io.on('connection', function(socket){
 
 	//user disconnect
 	socket.on('disconnect', function(){
-		//console.log(usernames+ ' disconnected');
-		// var index = usernames.indexOf(socket.username);
-		//remove username from array
-		// usernames.splice(index,1);
 		//update usernames
 		delete usernames[socket.username];
 
