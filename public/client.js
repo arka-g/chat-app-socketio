@@ -27,7 +27,7 @@ socket.on('chat message', function(msg){
 });
 
 socket.on('new user', function(name){
-	$('#msglist').append($('<li>').text(name + " has joined the chat room"));
+	$('#msglist').append($('<li>').text(name));
 });
 
 socket.on('usernames', function(usernames){

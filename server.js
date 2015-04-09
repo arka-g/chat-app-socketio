@@ -27,7 +27,7 @@ io.on('connection', function(socket){
 		socket.username = name;
 		//add to array
 		usernames[socket.username]=socket;
-		io.emit('new user', name);
+		io.emit('new user', name + " has joined the chat room");
 		io.emit('usernames', Object.keys(usernames));
 	});
 
@@ -56,7 +56,7 @@ io.on('connection', function(socket){
 			usernames[userSend].emit('secret message', {message: newMsg, username: socket.username});
 			socket.emit('secret message', {message: newMsg, username: socket.username});
 		}
-		if(keyword === "/kick"){
+		else if(keyword === "/kick"){
 			var kickUser = splitmsg[1];
 			socket.emit('kick user', kickUser);
 		}
@@ -73,7 +73,7 @@ io.on('connection', function(socket){
 		delete usernames[socket.username];
 
 		io.emit('usernames', Object.keys(usernames));
-		//io.emit('new user', socket.username + " has left the chat room");
+		io.emit('new user', socket.username + " has left the chat room");
 
 		//no username
 		if(!socket.username){
