@@ -46,6 +46,7 @@ socket.on('usernames', function(usernames){
 
 socket.on('secret message',function(msg){
 	$('#secretMsgList').append($('<li>').text(msg.username + ": " + msg.message));
+	$("#pchat").animate({ scrollTop: $("#pchat")[0].scrollHeight}, 200);
 });
 
 socket.on('kick user', function(kickUser){

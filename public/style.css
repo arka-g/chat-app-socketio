@@ -15,21 +15,15 @@ body {
 }
 
 .header {
-	font-size: 2em;
+	text-align: center;
+	font-size: 1.5em;
 	margin-top: 0.3em;
-	margin-bottom: 0..3em;
+	margin-bottom: 0.3em;
+	padding-left: 0.5em;
 }
 
-#chat{
-	height:450px;
-	background-color: #ececec;
-	padding: 0.75em;
-	overflow-y: scroll;
-}
-
-#msglist{
-	/*color: #01DF3A;*/
-	color: #303083;
+#me {
+	margin-bottom: 0.5em; 
 }
 
 #send-message{	
@@ -49,19 +43,44 @@ body {
 
 #users{
 	display:none;
-	width: 25%;
+	width: 20%;
 	height: 500px;
 	float: left;
 	background: #d4d4d4;
 	padding: 0.75em;
 }
 
-#username-container {
-	text-align: center;
+#chat{
+	width: 50%;
+	height:450px;
+	float: left;
+	background-color: #ececec;
+	padding: 0.75em;
+	overflow-y: scroll;
+}
+
+#private{
+	height:450px;
+	background-color: #ececec;
+	padding: 0.75em;
+}
+
+#msglist{
+	/*color: #01DF3A;*/
+	color: #303083;
+}
+
+#pchat {
+	height: 90%;
+	overflow-y: scroll;
 }
 
 #secretMsgList{
-	color:red;
+	color: #E06666;
+}
+
+#username-container {
+	text-align: center;
 }
 
 #pm{
