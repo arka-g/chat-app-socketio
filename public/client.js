@@ -41,5 +41,9 @@ socket.on('usernames', function(usernames){
 
 socket.on('secret message',function(msg){
 	$('#secretMsgList').append($('<li>').text(msg.username + ": " + msg.message));
+});
 
-})
+socket.on('kick user', function(kickUser){
+	$('#msglist').append($('<li>').text(kickUser + " has been kicked!"));
+	socket.emit('kick', kickUser);
+});

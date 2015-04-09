@@ -56,6 +56,10 @@ io.on('connection', function(socket){
 			usernames[userSend].emit('secret message', {message: newMsg, username: socket.username});
 			socket.emit('secret message', {message: newMsg, username: socket.username});
 		}
+		if(keyword === "/kick"){
+			var kickUser = splitmsg[1];
+			socket.emit('kick user', kickUser);
+		}
 		else{
 			//send to everyone
 			 io.emit('chat message', {message: msg, username: socket.username});
@@ -75,6 +79,11 @@ io.on('connection', function(socket){
 		if(!socket.username){
 			return;
 		}
+	});
+
+	socket.on('kick', function(kickUser){
+		console.log(usernames[kickUser].username);
+		usernames[kickUser].disconnect();
 	});
 });
 
