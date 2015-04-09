@@ -1,23 +1,63 @@
-#chat{
-	height:500px;
-	background: #000000;
+@font-face { 
+	font-family: 'Source Sans Pro';
+	src: url("fonts/SourceSansPro/SourceSansPro-Regular.otf") format("opentype");
 }
+
+@font-face {
+	font-family: 'Source Sans Pro Light';
+	src: url("fonts/SourceSansPro/SourceSansPro-Light.otf") format("opentype");
+}
+
+body {
+	background-color: #303030;
+	font-family: 'Source Sans Pro Light', Arial;
+	font-size: 1em;
+}
+
+.header {
+	font-size: 2em;
+	margin-top: 0.3em;
+	margin-bottom: 0..3em;
+}
+
+#chat{
+	height:450px;
+	background-color: #ececec;
+	padding: 0.75em;
+	overflow-y: scroll;
+}
+
 #msglist{
 	/*color: #01DF3A;*/
-	color:blue;
+	color: #303083;
 }
-#send-message{
+
+#send-message{	
 	text-align: center;
+	padding-top: 10px;
+	height: 40px;
+	background-color: #ececec;
 }
 
 #container{
 	display:none;
+	width:80%;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
 }
 
 #users{
-	display:block;
-	background: #C0C0C0;
 	display:none;
+	width: 25%;
+	height: 500px;
+	float: left;
+	background: #d4d4d4;
+	padding: 0.75em;
+}
+
+#username-container {
+	text-align: center;
 }
 
 #secretMsgList{
@@ -25,5 +65,13 @@
 }
 
 #pm{
-	color:white;
+	color: #000;
+}
+
+h1 {
+	text-align: center;
+	color: #ffffff;
+	font-family: 'Source Sans Pro';
+	font-size: 2.5em;
+	margin-bottom: 0.5em;
 }

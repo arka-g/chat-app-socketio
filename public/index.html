@@ -9,22 +9,23 @@
 		<input size = "30" id = "enter-name" placeholder="Enter a username"></input>
 		<input id = "submit-username" type = "submit" value = "Enter Chat"></input>
 	</form>
-	<div id = "users">
-		<h4>Users Connected</h4>
-		<h4 id="me"></h4>
-		<ul id = "userslist"></ul>
-	</div>
+	
 	<div id = "container">
-		<div id = "chat" style="height:500px;overflow:scroll">
+		<div id = "users">
+			<h4 class = "header">Users Connected</h4>
+			<h4 id="me"></h4>
+			<ul id = "userslist"></ul>
+		</div>
+		<div id = "chat">
 			<ul id = "msglist"></ul>
-			<h4 id = "pm">Private Messages</h4>
+			<h4 id = "pm" class="header">Private Messages</h4>
 			<ul id = "secretMsgList"></ul>
 		</div>
-
 		<form id="send-message">
 			<input size = "40" id = "message"></input>
 			<input id="submit-server" type="submit" value="Submit"></input>
 		</form>
+		
 	</div>
 </body>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
