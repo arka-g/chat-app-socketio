@@ -27,8 +27,8 @@ io.on('connection', function(socket){
 		socket.username = name;
 		//add to array
 		usernames[socket.username]=socket;
-		io.emit('new user', name + " has joined the chat room");
 		io.emit('usernames', Object.keys(usernames));
+		io.emit('new user', name);
 	});
 
 	//new chat message sent
@@ -73,7 +73,7 @@ io.on('connection', function(socket){
 		delete usernames[socket.username];
 
 		io.emit('usernames', Object.keys(usernames));
-		io.emit('disconnect user', socket.username + " has left the chat room");
+		io.emit('disconnect user', socket.username);
 
 		//no username
 		if(!socket.username){
