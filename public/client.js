@@ -31,6 +31,10 @@ socket.on('new user', function(name){
 	$('#msglist').append($('<li>').text(name + " has joined the chat room"));
 });
 
+socket.on('disconnect user', function(name){
+	$('#msglist').append($('<li>').text(name + " has left the chat room"));
+});
+
 socket.on('usernames', function(usernames){
 	//clear list first
 	$('#userslist').html("");
