@@ -24,6 +24,7 @@ $('#submit-server').on('click',function(e){
 //add message to chat div
 socket.on('chat message', function(msg){
 	$('#msglist').append($('<li>').text(msg.username + ": " + msg.message));
+	$("#chat").animate({ scrollTop: $("#chat")[0].scrollHeight}, 200);
 });
 
 socket.on('new user', function(name){
@@ -47,3 +48,4 @@ socket.on('kick user', function(kickUser){
 	$('#msglist').append($('<li>').text(kickUser + " has been kicked!"));
 	socket.emit('kick', kickUser);
 });
+
