@@ -30,6 +30,10 @@ socket.on('new user', function(name){
 	$('#msglist').append($('<li>').text(name));
 });
 
+socket.on('disconnect user', function(name){
+	$('#msglist').append($('<li>').text(name));
+});
+
 socket.on('usernames', function(usernames){
 	//clear list first
 	$('#userslist').html("");
