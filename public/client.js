@@ -4,8 +4,8 @@ $('#submit-username').on('click',function(e){
 	var name = $('#enter-name').val();
 	socket.emit('new user', name);
 	//should check here later on if the username already exists or not
-	$('#container').show();
-	$('#users').show();
+	$('#container').toggle('slow');
+	$('#users').toggle('slow');
 	$('#username-container').hide();
 	$('#me').text("You are " + name);
 	//reset 
@@ -21,9 +21,13 @@ $('#submit-server').on('click',function(e){
 	return false;
 });
 
+socket.on('checkRoom', function(msg){
+	socket.emit('same room', msg);
+});
 //add message to chat div
 socket.on('chat message', function(msg){
-	$('#msglist').append($('<li>').text(msg.username + ": " + msg.message));
+	var room = msg.room;
+	$('#msglist').append($('<li>').text(room+"    "+msg.username + ": " + msg.message));
 	$("#chat").animate({ scrollTop: $("#chat")[0].scrollHeight}, 200);
 });
 
@@ -53,4 +57,5 @@ socket.on('kick user', function(kickUser){
 	$('#msglist').append($('<li>').text(kickUser + " has been kicked!"));
 	socket.emit('kick', kickUser);
 });
+
 

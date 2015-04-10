@@ -25,6 +25,7 @@ io.on('connection', function(socket){
 	socket.on('new user', function(name){
 		//bind to socket of user
 		socket.username = name;
+		socket.room = "global";
 		//add to array
 		usernames[socket.username]=socket;
 		io.emit('usernames', Object.keys(usernames));
@@ -60,9 +61,15 @@ io.on('connection', function(socket){
 			var kickUser = splitmsg[1];
 			socket.emit('kick user', kickUser);
 		}
+		else if(keyword === "/create"){
+			socket.room = splitmsg[1];
+			console.log(socket.room);
+		}else if(keyword === "/leave"){
+			socket.room = "global";
+		}
 		else{
 			//send to everyone
-			 io.emit('chat message', {message: msg, username: socket.username});
+			 io.emit('checkRoom', {message: msg, username: socket.username, room: socket.room});
 		}
 
 	});
@@ -84,6 +91,12 @@ io.on('connection', function(socket){
 	socket.on('kick', function(kickUser){
 		console.log(usernames[kickUser].username);
 		usernames[kickUser].disconnect();
+	});
+
+	socket.on('same room', function(msg){
+		if(msg.room === socket.room){
+			socket.emit('chat message', msg);
+		}
 	});
 });
 
