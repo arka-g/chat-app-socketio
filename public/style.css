@@ -1,3 +1,5 @@
+/*FONTS*/
+
 @font-face { 
 	font-family: 'Source Sans Pro';
 	src: url("fonts/SourceSansPro/SourceSansPro-Regular.otf") format("opentype");
@@ -8,83 +10,23 @@
 	src: url("fonts/SourceSansPro/SourceSansPro-Light.otf") format("opentype");
 }
 
+/*BODY*/
+
 body {
 	background-color: #303030;
 	font-family: 'Source Sans Pro Light', Arial;
 	font-size: 1em;
 }
 
+/*HEADER*/
+
 .header {
+	color: #000000;
 	text-align: center;
 	font-size: 1.5em;
 	margin-top: 0.3em;
 	margin-bottom: 0.3em;
 	padding-left: 0.5em;
-}
-
-#me {
-	margin-bottom: 0.5em; 
-}
-
-#send-message{	
-	text-align: center;
-	padding-top: 10px;
-	height: 40px;
-	background-color: #ececec;
-}
-
-#container{
-	display:none;
-	width:80%;
-	margin-left: auto;
-	margin-right: auto;
-	overflow: hidden;
-}
-
-#users{
-	display:none;
-	width: 20%;
-	height: 500px;
-	float: left;
-	background: #d4d4d4;
-	padding: 0.75em;
-}
-
-#chat{
-	width: 50%;
-	height:450px;
-	float: left;
-	background-color: #ececec;
-	padding: 0.75em;
-	overflow-y: scroll;
-}
-
-#private{
-	height:450px;
-	background-color: #ececec;
-	padding: 0.75em;
-}
-
-#msglist{
-	/*color: #01DF3A;*/
-	color: #303083;
-}
-
-#pchat {
-	height: 90%;
-	overflow-y: scroll;
-}
-
-#secretMsgList{
-	color: #E06666;
-}
-
-#username-container {
-	text-align: center;
-}
-
-#pm{
-	color: #000;
 }
 
 h1 {
@@ -94,3 +36,97 @@ h1 {
 	font-size: 2.5em;
 	margin-bottom: 0.5em;
 }
+
+/*DIV CONTAINER*/
+
+#container{
+	display:none;
+	width:80%;
+	height: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+	border-radius: 3em;
+}
+	
+	/*USERS*/
+
+	#users{
+		display:none;
+		width: 20%;
+		height: 100%;
+		float: left;
+		background: #d4d4d4;
+		padding: 0.75em;
+	}
+		#username-container {
+			text-align: center;
+		}
+
+		#me {
+			margin-bottom: 0.5em; 
+		}
+
+	/*CHAT*/
+
+	#chat{
+		width: 50%;
+		height: 85%;
+		float: left;
+		background-color: #ececec;
+		padding: 0.75em;
+		overflow-y: scroll;
+	}
+		#msglist{
+			/*color: #01DF3A;*/
+			color: #303083;
+		}
+
+	/*PRIVATE CHAT*/
+
+	#private{
+		height: 85%;
+		background-color: #ececec;
+		padding: 0.75em;
+	}
+
+		#pchat {
+			height: 90%;
+			overflow-y: scroll;
+		}
+
+		#secretMsgList{
+			color: #E06666;
+		}
+
+	/*SUBMIT FORM*/
+
+	#send-message {	
+		text-align: center;	
+		padding-top: 1em;
+		height: 20%;
+		background-color: #ececec;
+	}
+
+	form {
+		font-family: 'Source Sans Pro';
+	}
+
+	input {
+		font-family: 'Source Sans Pro Light';
+		border: dotted 0.1em #999;
+		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+		border-radius: 0.4em;
+	}
+
+	input[type=submit] {
+		background-color:#fff; 
+		cursor:pointer;
+		border-radius: 0.4em; 
+	}
+
+	input:focus {
+	  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	  background-color: #fefefe;
+	}
+	
