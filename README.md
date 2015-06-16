@@ -1,5 +1,5 @@
 # chat-app-socketio
-Trying out socket-io with a simple chat app
+Visit [Sidchat](http://sidchat.herokuapp.com/) to try this app out.
 
 ##How to get this working
 You'll first need Node:
